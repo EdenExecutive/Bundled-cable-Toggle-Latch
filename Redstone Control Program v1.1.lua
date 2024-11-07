@@ -95,7 +95,7 @@ end
 local function systemShutdown() -- Will shut down all outgoing redstone signals, disabling all the systems
     print("System Override triggered")
     for i = 1, systemCount do
-        j = i - 1
+        local j = i - 1
         local isActive = rs.getBundledOutput(rsOutput, j) > 0
         if isActive == true then
             rs.setBundledOutput(rsOutput, i, 0)
@@ -108,7 +108,7 @@ end
 local function systemStartup() -- Will restart the system with the previously provided variables
     print("System restarting")
     for i = 1, systemCount do
-        j = i - 1
+        local j = i - 1
         if rsStates[i] == true then
             rs.setBundledOutput(rsOutput, i, 255)
             print("Turning on", colors[j], Systems[i])
@@ -124,7 +124,7 @@ local function RSstartup()
     end
 end
 
-local function RSupdate(_, _, side, _, newValue, colour) -- Will act upon a changing redstone signal
+local function RSupdate(side, newValue, colour) -- Will act upon a changing redstone signal
     local process = colour + 1
     if side == rsShutdown then
         if newValue > 0 then
