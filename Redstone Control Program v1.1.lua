@@ -30,9 +30,6 @@
     --Side from which the main Override signal enters. use cardinal directions in quotation marks ("up", "down", "north", "south", "east", "west"))
     local rsShutdown = "south"
 
-    -- amount of systems that will be controlled by the program (maximum: 16)
-    local systemCount = 16
-
     --List of all Systems present (maximum of 16)
     local Systems = {
         "Crushers",
@@ -65,6 +62,7 @@ local rs = component.redstone
 rsInput = sides[rsInput]
 rsOutput = sides[rsOutput]
 rsShutdown = sides[rsShutdown]
+systemCount = #Systems
 
 local function load() -- Loads rsStates or creates a list to fill rsStates with if no such file exists
     
